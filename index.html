@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Music</title>
+    <link rel="stylesheet" href="style.css" rel="preload" as="style">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module"src="app.js" defer></script>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>My Music</h1>
+      </header>
+      <main>
+        <section class="player">
+          <h2 class="song-title">{{ current.title }} - <span>{{ current.artist }}</span></h2>
+          <div class="controls">
+            <button class="prev" @click="prev">Prev</button>
+            <button class="play" v-if="!isPlaying" @click="play">Play</button>
+            <button class="pause" v-else @click="pause">Pause</button>
+            <button class="next" @click="next">Next</button>
+          </div>
+        </section>
+        <section class="playlist">
+          <h3>The Playlist</h3>
+          <button v-for="song in songs" :key="song.src" @click="play(song)" :class="(song.src == current.src) ? 'song playing' : 'song'">
+                {{ song.title }} - {{ song.artist }}
+          </button>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
