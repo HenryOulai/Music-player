@@ -3,7 +3,7 @@ const audioFiles = {
   "Metro Boomin - Space Cadet": "./assets/Metro Boomin Space Cadet Ft Gunna.mp3",
   "Money Man - 24 feat Lil Baby": "./assets/Money-Man---24-(feat.-Lil-Baby).mp3",
   "Gunna - Who You Foolin": "./assets/Gunna Who You Foolin.mp3",
-  "Lil Uzi - Vert Just Wanna Rock": "./assets/Lil-Uzi-Vert Just Wanna Rock.mp3",
+  "Lil Uzi Vert - Just Wanna Rock": "./assets/Lil-Uzi-Vert Just Wanna Rock.mp3",
 };
 
 const app = Vue.createApp({
