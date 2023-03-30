@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Music</title>
-    <link rel="stylesheet" href="style.css" rel="preload" as="style">
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script type="module"src="app.js" defer></script>
+    <script type="module" src="app.js" defer></script>
   </head>
   <body>
     <div id="app">
@@ -25,7 +25,7 @@
           </div>
         </section>
         <section class="playlist">
-          <h3>The Playlist</h3>
+          <h3>Trap anthems </h3>
           <button v-for="song in songs" :key="song.src" @click="play(song)" :class="(song.src == current.src) ? 'song playing' : 'song'">
                 {{ song.title }} - {{ song.artist }}
           </button>

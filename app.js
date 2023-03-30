@@ -1,35 +1,17 @@
-Vue.createApp({
+const audioFiles = {
+  "Yeat - Out thë way": "./assets/Yeat-Out-th-way-(HiphopKit.com).mp3",
+  "Metro Boomin - Space Cadet": "./assets/Metro Boomin Space Cadet Ft Gunna.mp3",
+  "Money Man - 24 feat Lil Baby": "./assets/Money-Man---24-(feat.-Lil-Baby).mp3",
+  "Gunna - Who You Foolin": "./assets/Gunna Who You Foolin.mp3",
+  "Lil Uzi - Vert Just Wanna Rock": "./assets/Lil-Uzi-Vert Just Wanna Rock.mp3",
+};
+
+const app = Vue.createApp({
   data() {
     return {
       current: {},
       index: 0,
-      songs: [
-        {
-          title: "Out thë way (Directed by Cole Bennett)",
-          artist: "Yeat",
-          src: import("./assets/Yeat-Out thë way(Directed by Cole Bennett).mp3"),
-        },
-        {
-          title: "Poppin(Directed by Cole Bennett)",
-          artist: "Yeat",
-          src: import("./assets/Poppin(Directed by Cole Bennett).mp3"),
-        },
-        {
-          title: "One Dance Ft Wizkid",
-          artist: "Drake",
-          src: import("./assets/Drake-One Dance Ft Wizkid.mp3"),
-        },
-        {
-          title: "Erase Your Social",
-          artist: "Lil Uzi Vert",
-          src: import("./assets/Lil-Uzi-Vert Erase Your Social.mp3"),
-        },
-        {
-          title: "Just Wanna Rock",
-          artist: "Lil Uzi Vert",
-          src: import("./assets/Lil-Uzi-Vert Just Wanna Rock.mp3")
-        },
-      ],
+      songs: Object.entries(audioFiles).map(([title, src]) => ({ title, artist: "", src })),
       player: new Audio(),
       isPlaying: false,
     };
@@ -44,19 +26,16 @@ Vue.createApp({
       this.player.play();
       this.isPlaying = true;
 
-      this.player.addEventListener(
-        "ended",
-        function () {
-          this.index++;
+      this.player.addEventListener("ended", () => {
+        this.index++;
 
-          if (this.index > this.songs.length - 1) {
-            this.index = 0;
-          }
+        if (this.index > this.songs.length - 1) {
+          this.index = 0;
+        }
 
-          this.current = this.songs[this.index];
-          this.play(this.current);
-        }.bind(this)
-      );
+        this.current = this.songs[this.index];
+        this.play(this.current);
+      });
     },
     pause() {
       this.player.pause();
@@ -87,4 +66,6 @@ Vue.createApp({
     this.current = this.songs[this.index];
     this.player.src = this.current.src;
   },
-}).mount("#app");
+});
+
+app.mount("#app");
